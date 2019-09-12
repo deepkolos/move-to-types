@@ -1,6 +1,6 @@
 {
   "name": "move-to-types",
-  "version": "1.0.2",
+  "version": "1.1.5",
   "description": "私有@types包小工具, 通过复制的方式",
   "main": "index.js",
   "bin": {
