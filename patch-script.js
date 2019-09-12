@@ -2,15 +2,17 @@ const fs = require('fs');
 try {
   const projectPkg = require('../../package.json');
   console.log('patching project script');
-  if (projectPkg.scripts === undefined) {
+  if (projectPkg.scripts === undefined || !projectPkg.scripts.postinstall) {
     projectPkg.scripts = {
       postinstall: 'move-to-types',
+      ...projectPkg.scripts,
     };
   } else {
     const currPostinstall = projectPkg.scripts.postinstall;
 
     projectPkg.scripts = {
       postinstall: `${currPostinstall} & move-to-types`,
+      ...projectPkg.scripts,
     };
 
     fs.writeFileSync('../../package.json', JSON.stringify(projectPkg, null, 2));
