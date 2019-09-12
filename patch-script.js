@@ -4,15 +4,15 @@ try {
   console.log('patching project script');
   if (projectPkg.scripts === undefined || !projectPkg.scripts.postinstall) {
     projectPkg.scripts = {
-      postinstall: 'move-to-types',
       ...projectPkg.scripts,
+      postinstall: 'move-to-types',
     };
   } else {
     const currPostinstall = projectPkg.scripts.postinstall;
 
     projectPkg.scripts = {
-      postinstall: `${currPostinstall} & move-to-types`,
       ...projectPkg.scripts,
+      postinstall: `${currPostinstall} & move-to-types`,
     };
 
     fs.writeFileSync('../../package.json', JSON.stringify(projectPkg, null, 2));
