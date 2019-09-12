@@ -9,3 +9,9 @@
 ```
 @xxx/pkg-name -> @types/@xxx_pkg-name
 ```
+
+### 使用
+
+```shell
+> npm i -S move-to-types
+```
