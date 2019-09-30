@@ -5,24 +5,21 @@ const path = require('path');
 const ps = require('process');
 const pkg = require('./package.json');
 const copydirSync = require('./copyDir.js');
-const targetPkg = require(pkg._where + '/package.json');
+const targetPkgPath = pkg._where + '/package.json';
+const targetPkg = require(targetPkgPath);
 
-const pkgName = targetPkg.name.replace(/[\\\/]/g, '_');
-const dirUp = targetPkg.name
-  .replace(/\\/g, '/')
-  .split('/')
-  .slice(1)
-  .map(i => '../');
-
+const pkgName =
+  'at_' + targetPkg.name.replace(/[\\\/]/g, '_').replace(/@/g, '');
 const src = ps.cwd();
-const desc = path.resolve(src, `../${dirUp}@types/${pkgName}`);
-
+const desc = path.resolve(
+  targetPkg._where,
+  `../node_modules/@types/${pkgName}`,
+);
 try {
   fs.mkdirSync(desc, { recursive: true });
   copydirSync(src, desc);
-  // fs.renameSync(src, desc);
-  console.log('copy dir from:', src);
-  console.log('copy dir to:', desc);
+  console.log('copy from:', src);
+  console.log('copy to:', desc);
 } catch (error) {
   console.log(error.toString());
 }
