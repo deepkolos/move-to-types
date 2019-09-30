@@ -19,5 +19,5 @@ pkg-anme      -> @types/at_pkg-name
 
 # TODO
 
-1. 生成已过去包的依赖声明, 防止 webpack 更新包的时候, 移除掉无依赖关联的包
-2. 非私有库支持
+1. 生成已过去包的依赖声明, 防止 webpack 更新包的时候, 移除掉无依赖关联的包 √ (复制到项目的父级目录 node_modules/@types)
+2. 非私有库支持 √
