@@ -13,7 +13,7 @@ const pkgName =
 const desc = path.resolve(
   src,
   `${
-    ~targetPkg.name.indexOf('@') ? '../../' : '../'
+    ~targetPkg.name.indexOf('@') ? '../../../' : '../../'
   }../node_modules/@types/${pkgName}`,
 );
 
