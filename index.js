@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const ps = require('process');
-const pkg = require('./package.json');
+const pkg = require(ps.cwd() + '/package.json');
 const copydirSync = require('./copyDir.js');
 const targetPkgPath = pkg._where + '/package.json';
 const targetPkg = require(targetPkgPath);
