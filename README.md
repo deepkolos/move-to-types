@@ -17,6 +17,16 @@ pkg-anme      -> @types/at_pkg-name
 > npm i -S move-to-types
 ```
 
+package.json
+
+```json
+{
+  "scripts": {
+    "postinstall": "move-to-types"
+  }
+}
+```
+
 # TODO
 
 1. 生成已过去包的依赖声明, 防止 webpack 更新包的时候, 移除掉无依赖关联的包 √ (复制到项目的父级目录 node_modules/@types)
